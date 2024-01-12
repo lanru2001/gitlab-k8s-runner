@@ -9,12 +9,11 @@ concurrent = 4
 check_interval = 1
 [[runners]]
  name = "k8-${module.vars.environ}"
- url = "https://git.nav.com"
+ url = "https://gitlab.com"
  token = ${var.gitlab_runner_token}
- environment = ["FF_GITLAB_REGISTRY_HELPER_IMAGE=true"]
  executor = "kubernetes"
  [runners.kubernetes]
-   image = "${module.vars.gitlab_runner_image}"
+   image = ""
    pull_policy = "always"
    privileged = true
    poll_interval = 5

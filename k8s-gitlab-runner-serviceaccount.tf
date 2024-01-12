@@ -4,10 +4,17 @@ resource "kubernetes_service_account" "gitlab-runner" {
   }
 }
 
-resource "kubernetes_service_account" "gitlab-runner-navfi" {
+resource "kubernetes_service_account" "gitlab-runner-dlframe" {
   metadata {
     name = "gitlab-runner"
-    namespace = "navfi"
+    namespace = "dlfarme"
+  }
+}
+
+resource "kubernetes_service_account" "gitlab-runner-models" {
+  metadata {
+    name = "gitlab-runner"
+    namespace = "models"
   }
 }
 
@@ -43,6 +50,11 @@ resource "kubernetes_cluster_role_binding" "gitlab-runner" {
   subject {
     kind      = "ServiceAccount"
     name      = "gitlab-runner"
-    namespace = "navfi"
+    namespace = "dlfarme"
+  }
+   subject {
+    kind      = "ServiceAccount"
+    name      = "gitlab-runner"
+    namespace = "dlfarme"
   }
 }
